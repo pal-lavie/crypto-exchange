@@ -1,20 +1,20 @@
 version: "3.9"
 
 services:
-  crytp_exchange:
-    container_name: crytp_exchange
-    image: dockerhub-crytp_exchange_app:1.0.0
+  crypto_exchange:
+    container_name: crypto_exchange
+    image: crypto_exchange_app:1.0.0
     build: .
     ports:
-      - "4000:4000"
+      - "5000:5000"
     environment:
-      - DB_URL=postgresql://postgres:postgres@flask_db:5432/postgres
+      - DB_URL=postgresql://postgres:postgres@postgres-service:5432/postgres
     depends_on:
-      - flask_db
+      - postgres-service
     volumes:
       - ./app:/app
-  flask_db:
-    container_name: flask_db
+  postgres-service:
+    container_name: postgres-service
     image: postgres:12
     ports:
       - "5432:5432"

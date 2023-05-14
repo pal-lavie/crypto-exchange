@@ -12,7 +12,9 @@ app = Flask(__name__)
 app.debug = True
 app.logger.setLevel(logging.DEBUG)
 
+# app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://postgres:postgres@postgres-service:5432/postgres"
 app.config["SQLALCHEMY_DATABASE_URI"] = environ.get("DB_URL")
+
 db.init_app(app)
 
 service = OrderService()
@@ -88,4 +90,4 @@ def get_order_by_id(id):
 
 
 if __name__ == "__main__":
-    app.run(debug=True,host="0.0.0.0", port="4000")
+    app.run(debug=True,host="0.0.0.0", port="5000")
