@@ -12,7 +12,7 @@ class Order(db.Model):
     order_type = db.Column(db.String(80), nullable=False)
     currency_pair = db.Column(db.String(80), nullable=False)
     price = db.Column(db.Float, nullable=False)
-    quantity = db.Column(db.Integer, nullable=False)
+    quantity = db.Column(db.Float, nullable=False)
 
     def __init__(self, order_type, currency_pair, price, quantity):
         self.order_type = order_type
